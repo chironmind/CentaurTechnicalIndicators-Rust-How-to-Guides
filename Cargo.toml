@@ -1,0 +1,30 @@
+[package]
+name = "rustti_how_to_guides"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+rust_ti = "2.0.1"
+
+[dev-dependencies]
+rust_ti = "2.0.1"
+csv = "1"
+serde = { version = "1", features = ["derive"] }
+chrono = "0.4"
+
+[[example]]
+name = "load_csv"
+path = "examples/load_csv.rs"
+
+[[example]]
+name = "bulk_vs_single"
+path = "examples/bulk_vs_single.rs"
+
+[[example]]
+name = "choose_period"
+path = "examples/choose_period.rs"
+
+[[example]]
+name = "choose_constant_model_type"
+path = "examples/choose_constant_model_type.rs"
+

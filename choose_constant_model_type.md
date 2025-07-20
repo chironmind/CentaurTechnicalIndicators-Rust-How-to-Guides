@@ -40,7 +40,7 @@ The default model for the RSI is a Smoothed Moving Average (SMA)
 
 We will store the models we are interested in into a Vec and iterate over it to calculate the RSI.
 
-In this guide we will skip the Personalised Moving Average as it is cover in an [other guide](./)
+In this guide we will skip the Personalised Moving Average as it is cover in an [other guide](./personliased_moving_average.md)
 
 ```rust
 
@@ -66,9 +66,9 @@ for m in models.iter() {
 
 > The logic is overly simple for the purpose of the guide.
 
-If the RSI is over 70 (overbought) and the next price < current price, the period gets a `+1`
+If the RSI is over 70 (overbought) and the next price < current price, the model gets a `+1`
 
-If the RSI is under 30 (oversold) and the next price > current price, the period gets a `+1`
+If the RSI is under 30 (oversold) and the next price > current price, the model gets a `+1`
 
 
 ```rust
@@ -128,7 +128,7 @@ println!(
 
 ## 🧪 Output
 
-> to run the repo example `cargo run --example choose_constant_type_model < data.csv`
+> to run the repo example `cargo run --example choose_constant_model_type < data.csv`
 
 ```shell
 Loaded 251 prices

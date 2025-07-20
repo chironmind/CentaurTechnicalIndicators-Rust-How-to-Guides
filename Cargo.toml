@@ -28,3 +28,15 @@ path = "examples/choose_period.rs"
 name = "choose_constant_model_type"
 path = "examples/choose_constant_model_type.rs"
 
+[[example]]
+name = "choose_deviation_model"
+path = "examples/choose_deviation_model.rs"
+
+[[example]]
+name = "personalised_moving_average"
+path = "examples/personalised_moving_average.rs"
+
+[[example]]
+name = "mcginley_dynamic"
+path = "examples/mcginley_dynamic.rs"
+

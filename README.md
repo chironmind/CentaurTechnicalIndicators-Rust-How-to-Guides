@@ -10,15 +10,13 @@ These guides are **goal-oriented**, helping you solve real-world tasks using Rus
 
 ## 🧭 What You’ll Find Here
 
-- [Load CSV Price Data:](./load_csv.md)  Parse OHLC prices from a file and calculate RSI 
+- [Load CSV Price Data:](./load_csv.md) Parse OHLC prices from a file and calculate RSI 
 - [When to use a bulk vs single module:](./bulk_vs_single.md) Understand when to use bulk functions or single functions
-- [Choosing the right central point:](./)  Use RSI + SMA + MACD together 
-- [Choosing the right moving average type:](./)  Implement basic entry/exit logic 
-- [Choosing the right constant model type:](./choose_constant_type_model.md)  Programatically determine the best `ConstantModelType` 
-- [Choosing the right deviation model:](./)  Implement basic entry/exit logic 
+- [Choosing the right constant model type:](./choose_constant_model_type.md) Programatically determine the best `ConstantModelType` 
+- [Choosing the right deviation model:](./choose_deviation_model.md) Programatically determine the best deviation model 
 - [Choosing the right period:](./choose_period.md) Programatically determine the best period
-- [How to use the Personalised Moving Average:](./)
-- [How to use the McGinley dynamic variation of functions:](./) 
+- [How to use the Personalised Moving Average:](./personliased_moving_average.md) Programatically determine the alpha of the moving average
+- [How to use the McGinley dynamic variation of functions:](./mcginley_dynamic.md) Quick guide on how to use the McGinley Dynamic functions 
 
 ---
 

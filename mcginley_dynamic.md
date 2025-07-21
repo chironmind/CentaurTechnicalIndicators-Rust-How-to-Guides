@@ -1,7 +1,7 @@
 # How to use McGinly Dynamic RustTI function
 
-This guide shows how to use the mcGinley dyanmic bands, the logic here can be applied to other 
-McGinley dyanmic functions.
+This guide shows how to use the [McGinley dyniamic bands](https://docs.rs/rust_ti/latest/rust_ti/candle_indicators/bulk/fn.mcginley_dynamic_bands.html), 
+the logic here can be applied to other McGinley dynamic functions.
 
 ---
 
@@ -48,9 +48,9 @@ use rust_ti::DeviationModel::StandardDeviation;
 let bands = bulk_md_bands(
     &prices, 
     StandardDeviation,
-    2.0, 
-    0.0,
-    5
+    2.0, // deviation multiplier
+    0.0, // previous McGinley dynamic
+    5 // period
 );
 
 println!("Length of bands {}", bands.len());
@@ -90,7 +90,7 @@ println!(
 
 ## 🧪 Output
 
-> to run the repo example `cargo run --example mcginley_dynamic < data.csv`
+> to run the repo example `cargo run --example mcginley_dynamic < data.csv` , code can be found [here](./examples/mcginley_dynamic.rs)
 
 ```shell
 Loaded 251 prices
@@ -103,7 +103,7 @@ Lower band 5551.313227907162, McGinley dynamic 5665.614575300795, upper band 577
 ## ✅ Next Steps
 
 - Programatically choose a period
-- Programatically choose a `Deviationodel`
+- Programatically choose a `DeviationModel`
 - Programatically choose a deviation multiplier
 - Combine all selections
 - Introduce the notion of punishment to the rating system

@@ -8,7 +8,7 @@ The rating model is overly simplified and should be refined to suit your needs b
 
 ## 🎯 Goal
 
-- Determine the best `ConstantModelType` for the RSI from a year of data
+- Determine the best `ConstantModelType` for the [RSI](https://docs.rs/rust_ti/latest/rust_ti/momentum_indicators/bulk/fn.relative_strength_index.html) from a year of data
 
 > This guide uses knowledge established in the [load csv](./load_csv.md) guide.
 
@@ -55,7 +55,7 @@ let models = vec![
 ];
 
 for m in models.iter() {
-    let rsi = relative_strenght_index(&prices, *m, 14);
+    let rsi = relative_strength_index(&prices, *m, 14);
 }
 
 [...]
@@ -83,7 +83,7 @@ let mut best_rating = 0.0;
 let mut best_model = ConstantModelType::SimpleMovingAverage;
 
 for m in models.iter() {
-    let rsi = relative_strengtih_index(&prices, *m, 14);
+    let rsi = relative_strength_index(&prices, *m, 14);
    
     let mut current_rating = 0.0;
     let mut attempt = 0.0;
@@ -106,8 +106,7 @@ for m in models.iter() {
             }
         }
      }
-    // The shorter the period the more RSIs, so the more opportunities to be right,
-    // for fairness we divide by the number of attempts
+
     let average_rating = current_rating / attempt;
     if average_rating > best_rating {
         best_rating = average_rating;
@@ -128,7 +127,7 @@ println!(
 
 ## 🧪 Output
 
-> to run the repo example `cargo run --example choose_constant_model_type < data.csv`
+> to run the repo example `cargo run --example choose_constant_model_type < data.csv` , code can be found [here](./examples/choose_constant_model_type.rs)
 
 ```shell
 Loaded 251 prices

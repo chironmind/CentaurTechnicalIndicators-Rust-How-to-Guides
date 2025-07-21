@@ -71,7 +71,7 @@ fn main() {
 
     // new price comes in
     data.push(5769.21);
-    let single_rsi = single_rsi(&data[40..], SmoothedMovingAverage);
+    let single_rsi = single_rsi(&data[date.len() - 14..], SmoothedMovingAverage);
     println!("Single RSI: {}", single_rsi);
 }
 ```
@@ -80,10 +80,12 @@ fn main() {
 
 ## 🧪 Output
 
-> the code from this guide can be found in `./examples/bulk_vs_single.rs` and can be run in the terminal `cargo run --example bulk_vs_single`
+> the code from this guide can be found in [`./examples/bulk_vs_single.rs`](./examples/bulk_vs_single.rs) and can be run in the terminal `cargo run --example bulk_vs_single`
 
 ```shell
 Bulk RSIs: [47.49434607156126, 50.3221945432267, ..., 40.34609500741716]
 Single RSI: 48.00106962275036
 ```
 
+- Use bulk when: calculating many historical values, initial setup, backtesting
+- Use single when: real-time updates, streaming data, memory constraints

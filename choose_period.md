@@ -8,7 +8,7 @@ The rating model is overly simplified and should be refined to suit your needs b
 
 ## 🎯 Goal
 
-- Determine the best period for the RSI from a year of data
+- Determine the best period for the [RSI](https://docs.rs/rust_ti/latest/rust_ti/momentum_indicators/bulk/fn.relative_strength_index.html) from a year of data
 
 > This guide uses knowledge established in the [load csv](./load_csv.md) guide.
 
@@ -44,7 +44,7 @@ peforms better than the default.
 [...]
 
 for p in 1..15 {
-    let rsi = relative_strenght_index(&prices, SmoothedMovingAverage, p);
+    let rsi = relative_strength_index(&prices, SmoothedMovingAverage, p);
 }
 
 [...]
@@ -111,7 +111,7 @@ println!(
 
 ## 🧪 Output
 
-> to run the repo example `cargo run --example choose_period < data.csv`
+> to run the repo example `cargo run --example choose_period < data.csv` , code can be found [here](./examples/choose_period.rs)
 
 ```shell
 Loaded 251 prices

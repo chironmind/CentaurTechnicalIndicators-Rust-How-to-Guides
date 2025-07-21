@@ -122,8 +122,8 @@ fn main() {
 ### 6. Calculate the RSI
 
 You will want to choose a `period`, and `ConstantModelType`. 
-[Choosing a period](./) and [Choosing a constant model type](./) show you how to do this in more programatically, for now
-we will use the defaults that Welles used when creating the RSI.
+[Choosing a period](./choose_period.md) and [Choosing a constant model type](./choose_constant_model_type.md) 
+show you how to do this in more programatically, for now we will use the defaults that Welles used when creating the RSI.
 
 ```rust
 
@@ -169,4 +169,4 @@ Calculated 238 rsis
 ## ✅ Next Steps
 
 - [Programatically choose a period](./choose_period.md) 
-- [Programatically choose a constant type model](./) 
+- [Programatically choose a constant type model](./choose_constant_model_type.md) 

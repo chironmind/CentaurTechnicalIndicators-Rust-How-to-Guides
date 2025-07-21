@@ -3,9 +3,9 @@
 The personalised moving average is a generic version of the math behind the smooth and exponential moving averages.
 
 Both models add heavier weights to more recent prices. The weight is determined by the alpha, which the caller can
-influence by passing in an alpha numerator and an alpha denomintator to `MovingAverageType::Personalised`.
+influence by passing in an alpha numerator and an alpha denominator to `MovingAverageType::Personalised`.
 
-For the smoothed moving average `aplha = 1 / prices.len()`
+For the smoothed moving average `alpha = 1 / prices.len()`
 
 For the exponential moving average `alpha = 2 / (prices.len() + 1)`
 
@@ -45,7 +45,7 @@ rust_ti = "2.1"
 
 ### 2. Calculate the RSI for multiple periods
 
-We will iterate from 0.0 to 5.0, with a step of 1. 
+We will iterate from 0 to 5, with a step of 1. 
 As `ConstantModelType::PersonalisedMovingAverage` takes a float you could you have a smaller step for more precision.
 
 ```rust
@@ -54,9 +54,11 @@ use rust_ti::ConstantModelType;
 
 [...]
 
-for num in 0.0..=5.0 {
-    for denom in 0.0..=5.0 {
-        let rsi = relative_strenght_index(
+for num in 0..=5 {
+    for denom in 0..=5 {
+        let num = num as f64;
+        let denom = denom as f64;
+        let rsi = relative_strength_index(
             &prices, 
             ConstantModelType::PersonalisedMovingAverage{ alpha_num: num, alpha_denom: denom},
             14
@@ -141,7 +143,7 @@ println!(
 
 ## 🧪 Output
 
-> to run the repo example `cargo run --example personalised_moving_average < data.csv`
+> to run the repo example `cargo run --example personalised_moving_average < data.csv` , the code can be found [here](./examples/personalised_moving_average.rs)
 
 ```shell
 Loaded 251 prices

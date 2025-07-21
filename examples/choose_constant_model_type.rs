@@ -81,8 +81,7 @@ fn main() {
                 }
             }
         }
-        // The shorter the period the more RSIs, so the more opportunities to be right,
-        // for fairness we divide by the number of attempts
+
         let average_rating = current_rating / attempt;
         if average_rating > best_rating {
             best_rating = average_rating;

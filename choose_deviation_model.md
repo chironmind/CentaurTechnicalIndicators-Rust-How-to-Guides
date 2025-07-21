@@ -8,7 +8,7 @@ The rating model is overly simplified and should be refined to suit your needs b
 
 ## 🎯 Goal
 
-- Determine the best `DeviationModel` for the Moving Constant Bands (generic Bollinger bands) from a year of data
+- Determine the best `DeviationModel` for the [Moving Constant Bands](https://docs.rs/rust_ti/latest/rust_ti/candle_indicators/bulk/fn.moving_constant_bands.html) (generic Bollinger bands) from a year of data
 
 > This guide uses knowledge established in the [load csv](./load_csv.md) guide.
 
@@ -97,7 +97,7 @@ for m in models.iter() {
         let lower_band = bands[i - 5].1; 
 
         // If price > upper_band, price is expected to fall, +1 reward if that happens
-        if price[i] > upper_band {
+        if prices[i] > upper_band {
             attempt += 1.0;
             if prices[i + 1] < prices[i] {
                 current_rating += 1.0;
@@ -105,7 +105,7 @@ for m in models.iter() {
         }
 
         // If price < lower_band, price is expected to rise, +1 reward if that happens
-        if price[i] < lower_band {
+        if prices[i] < lower_band {
             attempt += 1.0;
             if prices[i + 1] > prices[i] {
                 current_rating += 1.0;
@@ -133,7 +133,7 @@ println!(
 
 ## 🧪 Output
 
-> to run the repo example `cargo run --example choose_deviation_model < data.csv`
+> to run the repo example `cargo run --example choose_deviation_model < data.csv` , code can be found [here](./examples/choose_deviation_model.rs)
 
 ```shell
 Loaded 251 prices

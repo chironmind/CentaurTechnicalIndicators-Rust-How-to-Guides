@@ -2,7 +2,7 @@
 
 # RustTI How-To Guides
 
-Welcome to the **How-To Guides** for [RustTI](https://github.com/0100101001010000/RustTI) — a technical indicators library written in Rust.
+Welcome to the **How-To Guides** for [RustTI](https://github.com/ChironMind/RustTI) — a technical indicators library written in Rust.
 
 These guides are **goal-oriented**, helping you solve real-world tasks using RustTI. They are not tutorials nor reference material, each guide focuses on achieving something specific with minimal theory.
 
@@ -24,9 +24,9 @@ These guides are **goal-oriented**, helping you solve real-world tasks using Rus
 
 This repository is part of a structured documentation suite:
 
-- 📕 **Tutorials:** [See here](https://github.com/0100101001010000/RustTI-tutorials)
+- 📕 **Tutorials:** [See here](https://github.com/ChironMind/RustTI-tutorials)
 - 📘 **How-To Guides:** This repo!
-- ⏱️ **Benchmarks:** [See here](github.com/0100101001010000/RustTI-benchmarks)
+- ⏱️ **Benchmarks:** [See here](github.com/ChironMind/RustTI-benchmarks)
 - 📙 **Explanations:** Coming soon
 - 📗 **Reference:** [RustTI crate docs](https://docs.rs/rust_ti/latest/rust_ti/)
 
@@ -40,5 +40,5 @@ Feel free to open issues or PRs to improve clarity, fix mistakes, or suggest new
 
 ## 🧠 Want to Learn RustTI?
 
-Start with the [Getting Started Tutorial](https://github.com/0100101001010000/RustTI-tutorials/blob/main/getting_started.md).
+Start with the [Getting Started Tutorial](https://github.com/ChironMind/RustTI-tutorials/blob/main/getting_started.md).
 

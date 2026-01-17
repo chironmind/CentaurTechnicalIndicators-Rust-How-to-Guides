@@ -71,7 +71,7 @@ fn main() {
 
     // new price comes in
     data.push(5769.21);
-    let single_rsi = single_rsi(&data[date.len() - 14..], SmoothedMovingAverage).expect("Failed to calculate RSI");
+    let single_rsi = single_rsi(&data[data.len() - 14..], SmoothedMovingAverage).expect("Failed to calculate RSI");
     println!("Single RSI: {}", single_rsi);
 }
 ```

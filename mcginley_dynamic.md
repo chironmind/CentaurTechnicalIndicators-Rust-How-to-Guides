@@ -1,6 +1,6 @@
 # How to use McGinly Dynamic RustTI function
 
-This guide shows how to use the [McGinley dyniamic bands](https://docs.rs/centaur_technical_indicators/latest/centaur_technical_indicators/candle_indicators/bulk/fn.mcginley_dynamic_bands.html), 
+This guide shows how to use the [McGinley dynamic bands](https://docs.rs/centaur_technical_indicators/latest/centaur_technical_indicators/candle_indicators/bulk/fn.mcginley_dynamic_bands.html), 
 the logic here can be applied to other McGinley dynamic functions.
 
 ---

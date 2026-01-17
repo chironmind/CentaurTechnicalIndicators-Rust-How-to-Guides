@@ -32,7 +32,7 @@ Add the following dependencies to your Cargo.toml:
 csv = "1"
 serde = { version = "1", features = ["derive"] }
 chrono = "0.4"
-rust_ti = "2.1"
+centaur_technical_indicators = "1.0"
 ```
 
 ---
@@ -50,7 +50,7 @@ As `ConstantModelType::PersonalisedMovingAverage` takes a float you could you ha
 
 ```rust
 
-use rust_ti::ConstantModelType;
+use centaur_technical_indicators::ConstantModelType;
 
 [...]
 
@@ -62,7 +62,7 @@ for num in 0..=5 {
             &prices, 
             ConstantModelType::PersonalisedMovingAverage{ alpha_num: num, alpha_denom: denom},
             14
-        );
+        ).expect("Failed to calculate RSI");
     }
 }
 
@@ -96,7 +96,7 @@ for num in 0..=5 {
                 alpha_den: denom
             },
             14
-        );
+        ).expect("Failed to calculate RSI");
        
         let mut current_rating = 0.0;
         let mut attempt = 0.0;

@@ -1,6 +1,6 @@
 use chrono::NaiveDate;
-use rust_ti::momentum_indicators::bulk::relative_strength_index;
-use rust_ti::ConstantModelType::SmoothedMovingAverage;
+use centaur_technical_indicators::momentum_indicators::bulk::relative_strength_index;
+use centaur_technical_indicators::ConstantModelType::SmoothedMovingAverage;
 use serde::Deserialize;
 use std::io;
 
@@ -50,7 +50,7 @@ fn main() {
     let mut best_period = 0;
 
     for p in 2..15 {
-        let rsi = relative_strength_index(&prices, SmoothedMovingAverage, p);
+        let rsi = relative_strength_index(&prices, SmoothedMovingAverage, p).expect("Failed to calculate RSI");
 
         let mut current_rating = 0.0;
         let mut attempt = 0.0;

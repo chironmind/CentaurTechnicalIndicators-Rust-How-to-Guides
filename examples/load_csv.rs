@@ -1,6 +1,6 @@
 use chrono::NaiveDate;
-use rust_ti::momentum_indicators::bulk::relative_strength_index;
-use rust_ti::ConstantModelType::SmoothedMovingAverage;
+use centaur_technical_indicators::momentum_indicators::bulk::relative_strength_index;
+use centaur_technical_indicators::ConstantModelType::SmoothedMovingAverage;
 use serde::Deserialize;
 use std::io;
 
@@ -45,6 +45,6 @@ fn main() {
     println!("Loaded {} prices", data.len());
 
     let close: Vec<f64> = data.iter().map(|i| i.close).collect();
-    let rsi = relative_strength_index(&close, SmoothedMovingAverage, 14);
+    let rsi = relative_strength_index(&close, SmoothedMovingAverage, 14).expect("Failed to calculate RSI");
     println!("Calculated {} rsis", rsi.len());
 }

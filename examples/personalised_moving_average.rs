@@ -1,6 +1,6 @@
 use chrono::NaiveDate;
-use rust_ti::momentum_indicators::bulk::relative_strength_index;
-use rust_ti::ConstantModelType;
+use centaur_technical_indicators::momentum_indicators::bulk::relative_strength_index;
+use centaur_technical_indicators::ConstantModelType;
 use serde::Deserialize;
 use std::io;
 
@@ -61,7 +61,7 @@ fn main() {
                     alpha_den: denom,
                 },
                 14,
-            );
+            ).expect("Failed to calculate RSI");
 
             let mut current_rating = 0.0;
             let mut attempt = 0.0;

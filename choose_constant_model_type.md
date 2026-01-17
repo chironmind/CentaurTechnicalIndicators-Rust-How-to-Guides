@@ -8,7 +8,7 @@ The rating model is overly simplified and should be refined to suit your needs b
 
 ## 🎯 Goal
 
-- Determine the best `ConstantModelType` for the [RSI](https://docs.rs/rust_ti/latest/rust_ti/momentum_indicators/bulk/fn.relative_strength_index.html) from a year of data
+- Determine the best `ConstantModelType` for the [RSI](https://docs.rs/centaur_technical_indicators/latest/centaur_technical_indicators/momentum_indicators/bulk/fn.relative_strength_index.html) from a year of data
 
 > This guide uses knowledge established in the [load csv](./load_csv.md) guide.
 
@@ -23,7 +23,7 @@ Add the following dependencies to your Cargo.toml:
 csv = "1"
 serde = { version = "1", features = ["derive"] }
 chrono = "0.4"
-rust_ti = "2.1"
+centaur_technical_indicators = "1.0"
 ```
 
 ---
@@ -44,7 +44,7 @@ In this guide we will skip the Personalised Moving Average as it is cover in an 
 
 ```rust
 
-use rust_ti::ConstantModelType;
+use centaur_technical_indicators::ConstantModelType;
 
 [...]
 
@@ -55,7 +55,7 @@ let models = vec![
 ];
 
 for m in models.iter() {
-    let rsi = relative_strength_index(&prices, *m, 14);
+    let rsi = relative_strength_index(&prices, *m, 14).expect("Failed to calculate RSI");
 }
 
 [...]
@@ -83,7 +83,7 @@ let mut best_rating = 0.0;
 let mut best_model = ConstantModelType::SimpleMovingAverage;
 
 for m in models.iter() {
-    let rsi = relative_strength_index(&prices, *m, 14);
+    let rsi = relative_strength_index(&prices, *m, 14).expect("Failed to calculate RSI");
    
     let mut current_rating = 0.0;
     let mut attempt = 0.0;

@@ -16,7 +16,7 @@ Add the following dependencies to your Cargo.toml:
 
 ```toml
 [dependencies]
-rust_ti = "2.1"
+centaur_technical_indicators = "1.0"
 ```
 
 ---
@@ -52,9 +52,9 @@ When a new price comes in you can calculate the next RSI with the single functio
 
 ```rust
 
-use rust_ti::momentum_indicators::bulk::relative_strength_index as bulk_rsi;
-use rust_ti::momentum_indicators::single::relative_strength_index as single_rsi;
-use rust_ti::ConstantModelType::SmoothedMovingAverage;
+use centaur_technical_indicators::momentum_indicators::bulk::relative_strength_index as bulk_rsi;
+use centaur_technical_indicators::momentum_indicators::single::relative_strength_index as single_rsi;
+use centaur_technical_indicators::ConstantModelType::SmoothedMovingAverage;
 
 fn main() {
     let mut data = vec![
@@ -66,12 +66,12 @@ fn main() {
         5956.06, 5861.57, 5954.50, 5849.72, 5778.15, 5842.63, 5738.52, 5770.20,
         5614.56, 5572.07, 5599.30, 5521.52, 5638.94
     ];
-    let rsi = bulk_rsi(&data, SmoothedMovingAverage, 14);
+    let rsi = bulk_rsi(&data, SmoothedMovingAverage, 14).expect("Failed to calculate RSI");
     println!("Bulk RSIs: {:?}", rsi);
 
     // new price comes in
     data.push(5769.21);
-    let single_rsi = single_rsi(&data[date.len() - 14..], SmoothedMovingAverage);
+    let single_rsi = single_rsi(&data[date.len() - 14..], SmoothedMovingAverage).expect("Failed to calculate RSI");
     println!("Single RSI: {}", single_rsi);
 }
 ```

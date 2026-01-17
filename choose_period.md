@@ -8,7 +8,7 @@ The rating model is overly simplified and should be refined to suit your needs b
 
 ## 🎯 Goal
 
-- Determine the best period for the [RSI](https://docs.rs/rust_ti/latest/rust_ti/momentum_indicators/bulk/fn.relative_strength_index.html) from a year of data
+- Determine the best period for the [RSI](https://docs.rs/centaur_technical_indicators/latest/centaur_technical_indicators/momentum_indicators/bulk/fn.relative_strength_index.html) from a year of data
 
 > This guide uses knowledge established in the [load csv](./load_csv.md) guide.
 
@@ -23,7 +23,7 @@ Add the following dependencies to your Cargo.toml:
 csv = "1"
 serde = { version = "1", features = ["derive"] }
 chrono = "0.4"
-rust_ti = "2.1"
+centaur_technical_indicators = "1.0"
 ```
 
 ---
@@ -44,7 +44,7 @@ peforms better than the default.
 [...]
 
 for p in 1..15 {
-    let rsi = relative_strength_index(&prices, SmoothedMovingAverage, p);
+    let rsi = relative_strength_index(&prices, SmoothedMovingAverage, p).expect("Failed to calculate RSI");
 }
 
 [...]
@@ -66,7 +66,7 @@ let mut best_rating = 0;
 let mut best_period = 0;
 
 for p in 2..15 {
-    let rsi = relative_strength_index(&prices, SmoothedMovingAverage, p);
+    let rsi = relative_strength_index(&prices, SmoothedMovingAverage, p).expect("Failed to calculate RSI");
    
     let mut current_rating = 0.0;
     let mut attempt = 0.0;

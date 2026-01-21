@@ -1,7 +1,7 @@
-# How to Load CSV Price Data into RustTI
+# How to Load CSV Price Data into CentaurTechnicalIndicators-Rust
 
 This guide shows how to read a CSV file with historical OHLC price data, store the values into a struct, and
- extract those in a Vec suitable for use with RustTI indicators.
+ extract those in a Vec suitable for use with CentaurTechnicalIndicators-Rust indicators.
 
 ---
 
@@ -22,7 +22,7 @@ Add the following dependencies to your Cargo.toml:
 csv = "1"
 serde = { version = "1", features = ["derive"] }
 chrono = "0.4"
-rust_ti = "2.1"
+centaur_technical_indicators = "1.0"
 ```
 
 ---
@@ -127,8 +127,8 @@ show you how to do this in more programatically, for now we will use the default
 
 ```rust
 
-use rust_ti::momentum_indicators::bulk::relative_strength_index;
-use rust_ti::ConstantModelType::SmoothedMovingAverage;
+use centaur_technical_indicators::momentum_indicators::bulk::relative_strength_index;
+use centaur_technical_indicators::ConstantModelType::SmoothedMovingAverage;
 
 [...]
 

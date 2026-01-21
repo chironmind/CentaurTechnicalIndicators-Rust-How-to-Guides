@@ -1,7 +1,7 @@
 use chrono::NaiveDate;
-use rust_ti::candle_indicators::bulk::moving_constant_bands;
-use rust_ti::ConstantModelType::ExponentialMovingAverage;
-use rust_ti::DeviationModel;
+use centaur_technical_indicators::candle_indicators::bulk::moving_constant_bands;
+use centaur_technical_indicators::ConstantModelType::ExponentialMovingAverage;
+use centaur_technical_indicators::DeviationModel;
 use serde::Deserialize;
 use std::io;
 
@@ -59,7 +59,8 @@ fn main() {
     let mut best_model = DeviationModel::StandardDeviation;
 
     for m in models.iter() {
-        let bands = moving_constant_bands(&prices, ExponentialMovingAverage, *m, 2.0, 5);
+        let bands = moving_constant_bands(&prices, ExponentialMovingAverage, *m, 2.0, 5)
+            .expect("Failed to calculate bands");
 
         let mut current_rating = 0.0;
         let mut attempt = 0.0;

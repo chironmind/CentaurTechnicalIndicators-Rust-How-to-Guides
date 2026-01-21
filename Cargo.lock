@@ -39,12 +39,18 @@ dependencies = [
 ]
 
 [[package]]
+name = "centaur_technical_indicators"
+version = "1.0.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "ca5cdc00eed15c0bfa1a910c84dbbe6546b9ccdc117302ff73787f8ec2d91fa2"
+
+[[package]]
 name = "centaurtechnicalindicators_rust_how_to_guides"
 version = "0.1.0"
 dependencies = [
+ "centaur_technical_indicators",
  "chrono",
  "csv",
- "rust_ti",
  "serde",
 ]
 
@@ -185,12 +191,6 @@ checksum = "1885c039570dc00dcb4ff087a89e185fd56bae234ddc7f056a945bf36467248d"
 dependencies = [
  "proc-macro2",
 ]
-
-[[package]]
-name = "rust_ti"
-version = "2.0.1"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "2913881c1af931e3a2550c336b6f4f9558129cc2ca4f717123b6501497e89e76"
 
 [[package]]
 name = "rustversion"

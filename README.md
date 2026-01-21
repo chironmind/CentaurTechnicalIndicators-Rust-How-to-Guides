@@ -1,10 +1,10 @@
-![RustTI-how-to-guides Banner](./assets/how-to-banner.png)
+![CentaurTechnicalIndicators-Rust-how-to-guides Banner](./assets/how-to-banner.png)
 
-# RustTI How-To Guides
+# CentaurTechnicalIndicators-Rust How-To Guides
 
-Welcome to the **How-To Guides** for [RustTI](https://github.com/ChironMind/RustTI) — a technical indicators library written in Rust.
+Welcome to the **How-To Guides** for [CentaurTechnicalIndicators-Rust](https://github.com/ChironMind/CentaurTechnicalIndicators-Rust) — a technical indicators library written in Rust.
 
-These guides are **goal-oriented**, helping you solve real-world tasks using RustTI. They are not tutorials nor reference material, each guide focuses on achieving something specific with minimal theory.
+These guides are **goal-oriented**, helping you solve real-world tasks using CentaurTechnicalIndicators-Rust. They are not tutorials nor reference material, each guide focuses on achieving something specific with minimal theory.
 
 ---
 
@@ -24,11 +24,11 @@ These guides are **goal-oriented**, helping you solve real-world tasks using Rus
 
 This repository is part of a structured documentation suite:
 
-- 📕 **Tutorials:** [See here](https://github.com/ChironMind/RustTI-tutorials)
+- 📕 **Tutorials:** [See here](https://github.com/ChironMind/CentaurTechnicalIndicators-Rust-tutorials)
 - 📘 **How-To Guides:** This repo!
-- ⏱️ **Benchmarks:** [See here](github.com/ChironMind/RustTI-benchmarks)
+- ⏱️ **Benchmarks:** [See here](github.com/ChironMind/CentaurTechnicalIndicators-Rust-benchmarks)
 - 📙 **Explanations:** Coming soon
-- 📗 **Reference:** [RustTI crate docs](https://docs.rs/rust_ti/latest/rust_ti/)
+- 📗 **Reference:** [CentaurTechnicalIndicators-Rust crate docs](https://docs.rs/rust_ti/latest/rust_ti/)
 
 ---
 
@@ -38,7 +38,7 @@ Feel free to open issues or PRs to improve clarity, fix mistakes, or suggest new
 
 ---
 
-## 🧠 Want to Learn RustTI?
+## 🧠 Want to Learn CentaurTechnicalIndicators-Rust?
 
-Start with the [Getting Started Tutorial](https://github.com/ChironMind/RustTI-tutorials/blob/main/getting_started.md).
+Start with the [Getting Started Tutorial](https://github.com/ChironMind/CentaurTechnicalIndicators-Rust-tutorials/blob/main/getting_started.md).
 

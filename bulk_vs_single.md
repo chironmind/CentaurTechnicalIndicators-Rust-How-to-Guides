@@ -1,4 +1,4 @@
-# When to choose bulk vs single functions in RustTI
+# When to choose bulk vs single functions in CentaurTechnicalIndicators-Rust
 
 This guide shows when to choose the bulk version of a function or the single version of a function.
 
@@ -16,7 +16,7 @@ Add the following dependencies to your Cargo.toml:
 
 ```toml
 [dependencies]
-rust_ti = "2.1"
+centaur_technical_indicators = "1.0"
 ```
 
 ---
@@ -52,9 +52,9 @@ When a new price comes in you can calculate the next RSI with the single functio
 
 ```rust
 
-use rust_ti::momentum_indicators::bulk::relative_strength_index as bulk_rsi;
-use rust_ti::momentum_indicators::single::relative_strength_index as single_rsi;
-use rust_ti::ConstantModelType::SmoothedMovingAverage;
+use centaur_technical_indicators::momentum_indicators::bulk::relative_strength_index as bulk_rsi;
+use centaur_technical_indicators::momentum_indicators::single::relative_strength_index as single_rsi;
+use centaur_technical_indicators::ConstantModelType::SmoothedMovingAverage;
 
 fn main() {
     let mut data = vec![

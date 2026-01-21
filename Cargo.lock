@@ -39,6 +39,16 @@ dependencies = [
 ]
 
 [[package]]
+name = "centaurtechnicalindicators_rust_how_to_guides"
+version = "0.1.0"
+dependencies = [
+ "chrono",
+ "csv",
+ "rust_ti",
+ "serde",
+]
+
+[[package]]
 name = "cfg-if"
 version = "1.0.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -181,16 +191,6 @@ name = "rust_ti"
 version = "2.0.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "2913881c1af931e3a2550c336b6f4f9558129cc2ca4f717123b6501497e89e76"
-
-[[package]]
-name = "rustti_how_to_guides"
-version = "0.1.0"
-dependencies = [
- "chrono",
- "csv",
- "rust_ti",
- "serde",
-]
 
 [[package]]
 name = "rustversion"

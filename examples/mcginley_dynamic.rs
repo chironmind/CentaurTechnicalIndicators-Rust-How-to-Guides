@@ -1,7 +1,7 @@
 use chrono::NaiveDate;
-use rust_ti::candle_indicators::bulk::mcginley_dynamic_bands as bulk_md_bands;
-use rust_ti::candle_indicators::single::mcginley_dynamic_bands as single_md_bands;
-use rust_ti::DeviationModel::StandardDeviation;
+use centaur_technical_indicators::candle_indicators::bulk::mcginley_dynamic_bands as bulk_md_bands;
+use centaur_technical_indicators::candle_indicators::single::mcginley_dynamic_bands as single_md_bands;
+use centaur_technical_indicators::DeviationModel::StandardDeviation;
 use serde::Deserialize;
 use std::io;
 
@@ -47,14 +47,16 @@ fn main() {
 
     let mut prices: Vec<f64> = data.iter().map(|i| i.close).collect();
 
-    let bands = bulk_md_bands(&prices, StandardDeviation, 2.0, 0.0, 5);
+    let bands = bulk_md_bands(&prices, StandardDeviation, 2.0, 0.0, 5)
+        .expect("Failed to calculate bands");
 
     println!("Length of bands {}", bands.len());
 
     // Next prices comes in
     prices.push(5689.24);
 
-    let next_band = single_md_bands(&prices[247..], StandardDeviation, 2.0, bands.last().unwrap().1);
+    let next_band = single_md_bands(&prices[247..], StandardDeviation, 2.0, bands.last().unwrap().1)
+        .expect("Failed to calculate next band");
 
     println!(
         "Lower band {}, McGinley dynamic {}, upper band {}",

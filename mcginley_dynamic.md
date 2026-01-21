@@ -1,6 +1,6 @@
 # How to use McGinly Dynamic CentaurTechnicalIndicators-Rust function
 
-This guide shows how to use the [McGinley dyniamic bands](https://docs.rs/rust_ti/latest/rust_ti/candle_indicators/bulk/fn.mcginley_dynamic_bands.html), 
+This guide shows how to use the [McGinley dyniamic bands](https://docs.rs/centaur_technical_indicators/latest/centaur_technical_indicators/candle_indicators/bulk/fn.mcginley_dynamic_bands.html), 
 the logic here can be applied to other McGinley dynamic functions.
 
 ---
@@ -22,7 +22,7 @@ Add the following dependencies to your Cargo.toml:
 csv = "1"
 serde = { version = "1", features = ["derive"] }
 chrono = "0.4"
-rust_ti = "2.1"
+centaur_technical_indicators = "1.0"
 ```
 
 ---
@@ -39,9 +39,9 @@ The McGinley Dynamic uses a previous calculate value, if no previous McGinley dy
 
 ```rust
 
-use rust_ti::candle_indicators::bulk::mcginley_dynamic_bands as bulk_md_bands;
-use rust_ti::candle_indicators::single::mcginley_dynamic_bands as single_md_bands;
-use rust_ti::DeviationModel::StandardDeviation;
+use centaur_technical_indicators::candle_indicators::bulk::mcginley_dynamic_bands as bulk_md_bands;
+use centaur_technical_indicators::candle_indicators::single::mcginley_dynamic_bands as single_md_bands;
+use centaur_technical_indicators::DeviationModel::StandardDeviation;
 
 [...]
 

@@ -8,7 +8,7 @@ The rating model is overly simplified and should be refined to suit your needs b
 
 ## 🎯 Goal
 
-- Determine the best `DeviationModel` for the [Moving Constant Bands](https://docs.rs/rust_ti/latest/rust_ti/candle_indicators/bulk/fn.moving_constant_bands.html) (generic Bollinger bands) from a year of data
+- Determine the best `DeviationModel` for the [Moving Constant Bands](https://docs.rs/centaur_technical_indicators/latest/centaur_technical_indicators/candle_indicators/bulk/fn.moving_constant_bands.html) (generic Bollinger bands) from a year of data
 
 > This guide uses knowledge established in the [load csv](./load_csv.md) guide.
 
@@ -23,7 +23,7 @@ Add the following dependencies to your Cargo.toml:
 csv = "1"
 serde = { version = "1", features = ["derive"] }
 chrono = "0.4"
-rust_ti = "2.1"
+centaur_technical_indicators = "1.0"
 ```
 
 ---
@@ -42,9 +42,9 @@ We will store the models we are interested in into a Vec and iterate over it to 
 
 ```rust
 
-use rust_ti::DeviationModel;
-use rust_ti::ConstantModelType::ExponentialMovingAverage;
-use rust_ti::candle_indicators::bulk::moving_constant_bands;
+use centaur_technical_indicators::DeviationModel;
+use centaur_technical_indicators::ConstantModelType::ExponentialMovingAverage;
+use centaur_technical_indicators::candle_indicators::bulk::moving_constant_bands;
 
 [...]
 

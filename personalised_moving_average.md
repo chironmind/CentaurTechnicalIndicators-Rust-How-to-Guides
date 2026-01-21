@@ -1,4 +1,4 @@
-# How to determine the best `ConstantModelType::PersonalisedMovingAverage` for a RustTI function
+# How to determine the best `ConstantModelType::PersonalisedMovingAverage` for a CentaurTechnicalIndicators-Rust function
 
 The personalised moving average is a generic version of the math behind the smooth and exponential moving averages.
 

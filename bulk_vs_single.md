@@ -1,4 +1,4 @@
-# When to choose bulk vs single functions in RustTI
+# When to choose bulk vs single functions in CentaurTechnicalIndicators-Rust
 
 This guide shows when to choose the bulk version of a function or the single version of a function.
 

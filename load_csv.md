@@ -1,7 +1,7 @@
-# How to Load CSV Price Data into RustTI
+# How to Load CSV Price Data into CentaurTechnicalIndicators-Rust
 
 This guide shows how to read a CSV file with historical OHLC price data, store the values into a struct, and
- extract those in a Vec suitable for use with RustTI indicators.
+ extract those in a Vec suitable for use with CentaurTechnicalIndicators-Rust indicators.
 
 ---
 

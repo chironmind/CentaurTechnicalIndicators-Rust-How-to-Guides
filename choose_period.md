@@ -1,4 +1,4 @@
-# How to determine the best period for a RustTI function
+# How to determine the best period for a CentaurTechnicalIndicators-Rust function
 
 This guide shows how to progamatically determine the best period for your indicator.
 

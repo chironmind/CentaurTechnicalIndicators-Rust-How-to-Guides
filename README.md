@@ -26,7 +26,7 @@ This repository is part of a structured documentation suite:
 
 - 📕 **Tutorials:** [See here](https://github.com/ChironMind/CentaurTechnicalIndicators-Rust-tutorials)
 - 📘 **How-To Guides:** This repo!
-- ⏱️ **Benchmarks:** [See here](github.com/ChironMind/CentaurTechnicalIndicators-Rust-benchmarks)
+- ⏱️ **Benchmarks:** [See here](https://github.com/ChironMind/CentaurTechnicalIndicators-Rust-benchmarks)
 - 📙 **Explanations:** Coming soon
 - 📗 **Reference:** [CentaurTechnicalIndicators-Rust crate docs](https://docs.rs/rust_ti/latest/rust_ti/)
 

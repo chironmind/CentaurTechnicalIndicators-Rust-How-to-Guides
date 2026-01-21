@@ -24,9 +24,9 @@ These guides are **goal-oriented**, helping you solve real-world tasks using Cen
 
 This repository is part of a structured documentation suite:
 
-- 📕 **Tutorials:** [See here](https://github.com/ChironMind/CentaurTechnicalIndicators-Rust-tutorials)
+- 📕 **Tutorials:** [See here](https://github.com/ChironMind/CentaurTechnicalIndicators-Rust-Tutorials)
 - 📘 **How-To Guides:** This repo!
-- ⏱️ **Benchmarks:** [See here](https://github.com/ChironMind/CentaurTechnicalIndicators-Rust-benchmarks)
+- ⏱️ **Benchmarks:** [See here](https://github.com/ChironMind/CentaurTechnicalIndicators-Rust-Benchmarks)
 - 📙 **Explanations:** Coming soon
 - 📗 **Reference:** [CentaurTechnicalIndicators-Rust crate docs](https://docs.rs/centaur_technical_indicators/latest/centaur_technical_indicators/)
 
@@ -40,5 +40,5 @@ Feel free to open issues or PRs to improve clarity, fix mistakes, or suggest new
 
 ## 🧠 Want to Learn CentaurTechnicalIndicators-Rust?
 
-Start with the [Getting Started Tutorial](https://github.com/ChironMind/CentaurTechnicalIndicators-Rust-tutorials/blob/main/getting_started.md).
+Start with the [Getting Started Tutorial](https://github.com/ChironMind/CentaurTechnicalIndicators-Rust-Tutorials/blob/main/getting_started.md).
 

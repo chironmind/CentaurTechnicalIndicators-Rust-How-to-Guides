@@ -1,5 +1,3 @@
-![CentaurTechnicalIndicators-Rust-how-to-guides Banner](./assets/how-to-banner.png)
-
 # CentaurTechnicalIndicators-Rust How-To Guides
 
 Welcome to the **How-To Guides** for [CentaurTechnicalIndicators-Rust](https://github.com/ChironMind/CentaurTechnicalIndicators-Rust) — a technical indicators library written in Rust.
@@ -11,7 +9,7 @@ These guides are **goal-oriented**, helping you solve real-world tasks using Cen
 ## 🧭 What You’ll Find Here
 
 - [Load CSV Price Data:](./load_csv.md) Parse OHLC prices from a file and calculate RSI 
-- [When to use a bulk vs single module:](./bulk_vs_single.md) Understand when to use bulk functions or single functions
+- [When to use a bulk vs single function:](./bulk_vs_single.md) Understand when to use bulk functions or single functions
 - [Choosing the right constant model type:](./choose_constant_model_type.md) Programmatically determine the best `ConstantModelType` 
 - [Choosing the right deviation model:](./choose_deviation_model.md) Programmatically determine the best deviation model 
 - [Choosing the right period:](./choose_period.md) Programmatically determine the best period
@@ -27,7 +25,7 @@ This repository is part of a structured documentation suite:
 - 📕 **Tutorials:** [See here](https://github.com/ChironMind/CentaurTechnicalIndicators-Rust-Tutorials)
 - 📘 **How-To Guides:** This repo!
 - ⏱️ **Benchmarks:** [See here](https://github.com/ChironMind/CentaurTechnicalIndicators-Rust-Benchmarks)
-- 📙 **Explanations:** Coming soon
+- 📙 **Explanations:** [centaurlabs.pages.dev](https://centaurlabs.pages.dev/)
 - 📗 **Reference:** [CentaurTechnicalIndicators-Rust crate docs](https://docs.rs/centaur_technical_indicators/latest/centaur_technical_indicators/)
 
 ---
@@ -35,6 +33,14 @@ This repository is part of a structured documentation suite:
 ## 💬 Contributing
 
 Feel free to open issues or PRs to improve clarity, fix mistakes, or suggest new guides!
+
+If you want to contribute a new guide, please follow the existing format and structure for consistency:
+- Start with a brief introduction of the guide's purpose.
+- Clearly define the goal of the guide.
+- List any prerequisites or dependencies.
+- Provide step-by-step instructions with code snippets.
+- Include expected output where applicable.
+- Add a runnable example in the `examples/` directory.
 
 ---
 

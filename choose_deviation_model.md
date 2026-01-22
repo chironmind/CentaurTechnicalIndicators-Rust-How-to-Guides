@@ -1,6 +1,6 @@
 # How to determine the best `DeviationModel` for a CentaurTechnicalIndicators-Rust function
 
-This guide shows how to progamatically determine the best `DeviationModel` for your indicator.
+This guide shows how to programmatically determine the best `DeviationModel` for your indicator.
 
 The rating model is overly simplified and should be refined to suit your needs before usage.
 
@@ -46,95 +46,102 @@ use centaur_technical_indicators::DeviationModel;
 use centaur_technical_indicators::ConstantModelType::ExponentialMovingAverage;
 use centaur_technical_indicators::candle_indicators::bulk::moving_constant_bands;
 
-[...]
+// [...]
 
-let models = vec![
-    DeviationModel::StandardDeviation,
-    DeviationModel::MeanAbsoluteDeviation,
-    DeviationModel::MedianAbsoluteDeviation,
-    DeviationModel::ModeAbsoluteDeviation,
-    DeviationModel::UlcerIndex,
-];
+fn main() {
+    let data = get_data();
 
-for m in models.iter() {
-    let bands = moving_constant_bands(&prices, ExponentialMovingAverage, *m, 2.0, 5);
+    let models = vec![
+        DeviationModel::StandardDeviation,
+        DeviationModel::MeanAbsoluteDeviation,
+        DeviationModel::MedianAbsoluteDeviation,
+        DeviationModel::ModeAbsoluteDeviation,
+        DeviationModel::UlcerIndex,
+    ];
+
+    for m in models.iter() {
+        let bands = moving_constant_bands(&prices, ExponentialMovingAverage, *m, 2.0, 5);
+    }
 }
-
-[...]
-
 ```
 
 ### 3. Rate each different constant bands model to find the best
 
-> The logic is overly simple for the purpose of the guide.
+> The logic is overly simplified for the purpose of the guide.
 
 If price > upper band (overbought) and next price < current price, model gets a `+1`
 
 If price < lower band (oversold) and next price > current price, model gets a `+1`
 
 ```rust
+// [...]
 
-[...]
+fn main() {
+    let data = get_data();
 
-let models = vec![
-    DeviationModel::StandardDeviation,
-    DeviationModel::MeanAbsoluteDeviation,
-    DeviationModel::MedianAbsoluteDeviation,
-    DeviationModel::ModeAbsoluteDeviation,
-    DeviationModel::UlcerIndex,
-];
+    let models = vec![
+        DeviationModel::StandardDeviation,
+        DeviationModel::MeanAbsoluteDeviation,
+        DeviationModel::MedianAbsoluteDeviation,
+        DeviationModel::ModeAbsoluteDeviation,
+        DeviationModel::UlcerIndex,
+    ];
 
-let mut best_rating = 0.0;
-let mut best_model = DeviationModel::StandardDeviation;
+    let mut best_rating = 0.0;
+    let mut best_model = DeviationModel::StandardDeviation;
 
-for m in models.iter() {
-    let bands = moving_constant_bands(&prices, ExponentialMovingAverage, *m, 2.0, 5);
-   
-    let mut current_rating = 0.0;
-    let mut attempt = 0.0;
-    for i in 5..data.len() - 1 { 
-        let upper_band = bands[i - 5].0; 
-        let lower_band = bands[i - 5].1; 
+    for m in models.iter() {
+        let bands = moving_constant_bands(&prices, ExponentialMovingAverage, *m, 2.0, 5);
 
-        // If price > upper_band, price is expected to fall, +1 reward if that happens
-        if prices[i] > upper_band {
-            attempt += 1.0;
-            if prices[i + 1] < prices[i] {
-                current_rating += 1.0;
+        let mut current_rating = 0.0;
+        let mut attempt = 0.0;
+        for i in 5..data.len() - 1 {
+            let upper_band = bands[i - 5].0;
+            let lower_band = bands[i - 5].1;
+
+            // If price > upper_band, price is expected to fall, +1 reward if that happens
+            if prices[i] > upper_band {
+                attempt += 1.0;
+                if prices[i + 1] < prices[i] {
+                    current_rating += 1.0;
+                }
+            }
+
+            // If price < lower_band, price is expected to rise, +1 reward if that happens
+            if prices[i] < lower_band {
+                attempt += 1.0;
+                if prices[i + 1] > prices[i] {
+                    current_rating += 1.0;
+                }
             }
         }
 
-        // If price < lower_band, price is expected to rise, +1 reward if that happens
-        if prices[i] < lower_band {
-            attempt += 1.0;
-            if prices[i + 1] > prices[i] {
-                current_rating += 1.0;
-            }
+        let average_rating = current_rating / attempt;
+        if average_rating > best_rating {
+            best_rating = average_rating;
+            best_model = *m;
         }
     }
 
-    let average_rating = current_rating / attempt;
-    if average_rating > best_rating {
-        best_rating = average_rating;
-        best_model = *m;
-    }
+    println!(
+        "Best model for moving constant bands is {:?} with a rating of {}",
+        best_model, best_rating
+    );
 }
-
-println!(
-    "Best model for moving constant bands is {:?} with a rating of {}",
-    best_model, best_rating
-);
-
-[...]
-
 ```
 
 ---
 
 ## 🧪 Output
 
-> to run the repo example `cargo run --example choose_deviation_model < data.csv` , code can be found [here](./examples/choose_deviation_model.rs)
+The full code for this guide can be found in [`./examples/choose_deviation_model.rs`](./examples/choose_deviation_model.rs).
 
+To run it:
+```bash
+cd examples
+cargo run --example choose_deviation_model < data.csv
+```
+Expected output:
 ```shell
 Loaded 251 prices
 Best model for moving constant bands is MedianAbsoluteDeviation with a rating of 0.47333333333333333
@@ -144,9 +151,6 @@ Best model for moving constant bands is MedianAbsoluteDeviation with a rating of
 
 ## ✅ Next Steps
 
-- Programatically choose a period
-- Programatically choose a `ConstantModelType`
-- Programatically choose a deviation multiplier
-- Combine all selections
-- Introduce the notion of punishment to the rating system
+- [Programmatically choose a period](./choose_period.md)
+- [How to use the Personalised Moving Average](./personalised_moving_average.md)
 

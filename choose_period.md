@@ -1,6 +1,6 @@
 # How to determine the best period for a CentaurTechnicalIndicators-Rust function
 
-This guide shows how to progamatically determine the best period for your indicator.
+This guide shows how to programmatically determine the best period for your indicator.
 
 The rating model is overly simplified and should be refined to suit your needs before usage.
 
@@ -36,24 +36,23 @@ centaur_technical_indicators = "1.0"
 
 ### 2. Calculate the RSI for multiple periods
 
-The default period for the RSI is 14, we will iterate from 1 to 15 to see if we can find a period that
-peforms better than the default.
+The default period for the RSI is 14, we will iterate from 2 to 15 to see if we can find a period that
+performs better than the default.
 
 ```rust
+// [...]
+fn main() {
+    let data = get_data();
 
-[...]
-
-for p in 1..15 {
-    let rsi = relative_strength_index(&prices, SmoothedMovingAverage, p);
+    for p in 2..15 {
+        let rsi = relative_strength_index(&prices, SmoothedMovingAverage, p);
+    }
 }
-
-[...]
-
 ```
 
 ### 3. Rate each different RSI to find the best
 
-> The logic is overly simple for the purpose of the guide.
+> The logic is overly simplified for the purpose of the guide.
 
 If the RSI is over 70 (overbought) and the next price < current price, the period gets a `+1`
 
@@ -61,58 +60,66 @@ If the RSI is under 30 (oversold) and the next price > current price, the period
 
 
 ```rust
+// [...]
 
-let mut best_rating = 0;
-let mut best_period = 0;
+fn main() {
+    let data = get_data();
 
-for p in 2..15 {
-    let rsi = relative_strength_index(&prices, SmoothedMovingAverage, p);
-   
-    let mut current_rating = 0.0;
-    let mut attempt = 0.0;
-    for i in p..data.len() - 1 { 
-        let rsi_val = rsi[i - p]; 
+    let mut best_rating = 0;
+    let mut best_period = 0;
 
-        // If RSI > 70, overbought, price is expected to fall, if that happens +1 reward
-        if rsi_val > 70.0 {
-            attempt += 1.0;
-            if prices[i + 1] < prices[i] {
-                current_rating += 1.0;
+    for p in 2..15 {
+        let rsi = relative_strength_index(&prices, SmoothedMovingAverage, p);
+
+        let mut current_rating = 0.0;
+        let mut attempt = 0.0;
+        for i in p..data.len() - 1 {
+            let rsi_val = rsi[i - p];
+
+            // If RSI > 70, overbought, price is expected to fall, if that happens +1 reward
+            if rsi_val > 70.0 {
+                attempt += 1.0;
+                if prices[i + 1] < prices[i] {
+                    current_rating += 1.0;
+                }
+            }
+
+            // If RSI < 30, oversold, price is expected to rise, if that happens +1 reward
+            if rsi_val < 30.0 {
+                attempt += 1.0;
+                if prices[i + 1] > prices[i] {
+                    current_rating += 1.0;
+                }
             }
         }
-
-        // If RSI < 30, oversold, price is expected to rise, if that happens +1 reward
-        if rsi_val < 30.0 {
-            attempt += 1.0;
-            if prices[i + 1] > prices[i] {
-                current_rating += 1.0;
-            }
+        // The shorter the period the more RSIs, so the more opportunities to be right,
+        // for fairness we divide by the number of attempts
+        let average_rating = current_rating / attempt;
+        if average_rating > best_rating {
+            best_rating = average_rating;
+            best_period = p;
         }
-     }
-    // The shorter the period the more RSIs, so the more opportunities to be right,
-    // for fairness we divide by the number of attempts
-    let average_rating = current_rating / attempt;
-    if average_rating > best_rating {
-        best_rating = average_rating;
-        best_period = p;
     }
+
+    println!(
+        "Best period for RSI is {} with a rating of {}",
+        best_period, best_rating
+    );
 }
-
-println!(
-    "Best period for RSI is {} with a rating of {}",
-    best_period, best_rating
-);
-
-[...]
-
 ```
 
 ---
 
 ## 🧪 Output
 
-> to run the repo example `cargo run --example choose_period < data.csv` , code can be found [here](./examples/choose_period.rs)
+The full code for this guide can be found in [`./examples/choose_period.rs`](./examples/choose_period.rs).
 
+To run it:
+```bash
+cd examples
+cargo run --example choose_period < data.csv
+```
+Expected output:
 ```shell
 Loaded 251 prices
 Best period for RSI is 7 with a rating of 0.5555555555555556
@@ -122,6 +129,5 @@ Best period for RSI is 7 with a rating of 0.5555555555555556
 
 ## ✅ Next Steps
 
-- [Programatically choose a constant type model](./choose_constant_type_model.md) 
-- Combine period selection and constant type model selection
-- Introduce the notion of punishment to the rating system
+- [How to use the Personalised Moving Average](./personalised_moving_average.md)
+- [How to use the McGinley dynamic variation of functions](./mcginley_dynamic.md)

@@ -1,4 +1,4 @@
-# How to use McGinly Dynamic CentaurTechnicalIndicators-Rust function
+# How to use the McGinely Dynamic CentaurTechnicalIndicators-Rust function
 
 This guide shows how to use the [McGinley dyniamic bands](https://docs.rs/centaur_technical_indicators/latest/centaur_technical_indicators/candle_indicators/bulk/fn.mcginley_dynamic_bands.html), 
 the logic here can be applied to other McGinley dynamic functions.
@@ -43,20 +43,20 @@ use centaur_technical_indicators::candle_indicators::bulk::mcginley_dynamic_band
 use centaur_technical_indicators::candle_indicators::single::mcginley_dynamic_bands as single_md_bands;
 use centaur_technical_indicators::DeviationModel::StandardDeviation;
 
-[...]
+// [...]
 
-let bands = bulk_md_bands(
-    &prices, 
-    StandardDeviation,
-    2.0, // deviation multiplier
-    0.0, // previous McGinley dynamic
-    5 // period
-);
+fn main() {
+    let data = get_data();
+    let bands = bulk_md_bands(
+        &prices,
+        StandardDeviation,
+        2.0, // deviation multiplier
+        0.0, // previous McGinley dynamic
+        5 // period
+    );
 
-println!("Length of bands {}", bands.len());
-
-[...]
-
+    println!("Length of bands {}", bands.len());
+}
 ```
 
 ### 3. Use last value to calculate next McGinley band
@@ -64,47 +64,43 @@ println!("Length of bands {}", bands.len());
 From step 2 we now have a previous McGinley dynamic which we will use in the `single` function
 
 ```rust
+// [...]
 
-[...]
+pub fn main() {
+    // [...]
 
-// Next price comes in
-prices.push(5689.24);
+    // Next price comes in
+    prices.push(5689.24);
 
-let next_band = single_md_bands(
-    &prices[247..],
-    StandardDeviation,
-    2.0,
-    bands.last().unwrap().1
-);
+    let next_band = single_md_bands(
+        &prices[247..],
+        StandardDeviation,
+        2.0,
+        bands.last().unwrap().1
+    );
 
-println!(
-    "Lower band {}, McGinley dynamic {}, upper band {}", 
-    next_band.0, next_band.1, next_band.2
-);
-
-[...]
-
+    println!(
+        "Lower band {}, McGinley dynamic {}, upper band {}",
+        next_band.0, next_band.1, next_band.2
+    );
+}
 ```
 
 ---
 
 ## 🧪 Output
 
-> to run the repo example `cargo run --example mcginley_dynamic < data.csv` , code can be found [here](./examples/mcginley_dynamic.rs)
+The full code for this guide can be found in [`./examples/mcginley_dynamic.rs`](./examples/mcginley_dynamic.rs).
 
+To run it:
+```bash
+cd examples
+cargo run --example mcginley_dynamic < data.csv
+```
+Expected output:
 ```shell
 Loaded 251 prices
 Length of bands 247
 Lower band 5551.313227907162, McGinley dynamic 5665.614575300795, upper band 5779.9159226944275
 ```
-
 ---
-
-## ✅ Next Steps
-
-- Programatically choose a period
-- Programatically choose a `DeviationModel`
-- Programatically choose a deviation multiplier
-- Combine all selections
-- Introduce the notion of punishment to the rating system
-

@@ -35,7 +35,7 @@ If yes, then you will only be able to calculate a single value for the indicator
 
 Do you have extra data? 
 
-If yes, then you will be able to calculate mutliple values for the indicator
+If yes, then you will be able to calculate multiple values for the indicator
 
 ### 3. What is your goal?
 
@@ -46,7 +46,7 @@ If yes, make sure you collect enough data to be able to calculate previous value
 ### 4. Example
 
 The default RSI takes 14 previous prices, if you have 53 days worth of previous data you can 
-use the bulk function to calculate the previous RSIs.
+use the bulk function to calculate multiple previous RSIs.
 
 When a new price comes in you can calculate the next RSI with the single function.
 
@@ -80,8 +80,14 @@ fn main() {
 
 ## 🧪 Output
 
-> the code from this guide can be found in [`./examples/bulk_vs_single.rs`](./examples/bulk_vs_single.rs) and can be run in the terminal `cargo run --example bulk_vs_single`
+The full code for this guide can be found in [`./examples/bulk_vs_single.rs`](./examples/bulk_vs_single.rs).
 
+To run it:
+```bash
+cd examples
+cargo run --example bulk_vs_single
+```
+Expected output:
 ```shell
 Bulk RSIs: [47.49434607156126, 50.3221945432267, ..., 40.34609500741716]
 Single RSI: 48.00106962275036
@@ -89,3 +95,10 @@ Single RSI: 48.00106962275036
 
 - Use bulk when: calculating many historical values, initial setup, backtesting
 - Use single when: real-time updates, streaming data, memory constraints
+
+---
+
+## ✅ Next Steps
+
+- [Programmatically choose a constant type model](./choose_constant_model_type.md)
+- [Programmatically choose a deviation model](./choose_deviation_model.md)

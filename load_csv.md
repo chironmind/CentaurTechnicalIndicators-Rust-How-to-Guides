@@ -1,14 +1,14 @@
 # How to Load CSV Price Data into CentaurTechnicalIndicators-Rust
 
 This guide shows how to read a CSV file with historical OHLC price data, store the values into a struct, and
- extract those in a Vec suitable for use with CentaurTechnicalIndicators-Rust indicators.
+ extract those into a Vec suitable for use with CentaurTechnicalIndicators-Rust indicators.
 
 ---
 
 ## 🎯 Goal
 
 - Load a `.csv` file with columns like timestamp, open, high, low, close
-- Parse the coumns into an OHLC struct
+- Parse the columns into an OHLC struct
 - Store the enums into a Vec
 
 ---
@@ -68,7 +68,7 @@ struct Ohlc {
 
 use chrono::NaiveDate;
 
-[...]
+// [...]
 
 mod csv_date_format {
     use chrono::NaiveDate;
@@ -94,7 +94,7 @@ mod csv_date_format {
 
 use std::io;
 
-[...]
+// [...]
 
 fn get_data() -> Vec<Ohlc> {
     let mut prices = Vec::new();
@@ -123,14 +123,14 @@ fn main() {
 
 You will want to choose a `period`, and `ConstantModelType`. 
 [Choosing a period](./choose_period.md) and [Choosing a constant model type](./choose_constant_model_type.md) 
-show you how to do this in more programatically, for now we will use the defaults that Welles used when creating the RSI.
+show you how to do this programmatically, for now we will use the defaults that Welles used when creating the RSI.
 
 ```rust
 
 use centaur_technical_indicators::momentum_indicators::bulk::relative_strength_index;
 use centaur_technical_indicators::ConstantModelType::SmoothedMovingAverage;
 
-[...]
+// [...]
 
 fn main() {
     let data = get_data();
@@ -143,22 +143,18 @@ fn main() {
 
 ```
 
-### 7. Run the code
-
-```bash
-cargo run < data.csv
-```
-
-or to run this how-to example
-
-```bash
-cargo run --example load_csv < data.csv
-```
-
 ---
 
 ## 🧪 Output
 
+The full code for this guide can be found in [`./examples/load_csv.rs`](./examples/load_csv.rs):
+
+To run it:
+```bash
+cd examples
+cargo run --example load_csv < data.csv
+```
+Expected output:
 ```shell
 Loaded 251 prices
 Calculated 238 rsis
@@ -168,5 +164,5 @@ Calculated 238 rsis
 
 ## ✅ Next Steps
 
-- [Programatically choose a period](./choose_period.md) 
-- [Programatically choose a constant type model](./choose_constant_model_type.md) 
+- [When to use bulk functions vs single functions](./bulk_vs_single.md) 
+- [Programmatically choose a constant type model](./choose_constant_model_type.md) 

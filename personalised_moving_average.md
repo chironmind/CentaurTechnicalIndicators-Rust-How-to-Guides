@@ -9,7 +9,7 @@ For the smoothed moving average `alpha = 1 / prices.len()`
 
 For the exponential moving average `alpha = 2 / (prices.len() + 1)`
 
-This guide shows how to progamatically determine the best `ConstantModelType::PersonalisedMovingAverage` for your indicator.
+This guide shows how to programmatically determine the best `ConstantModelType::PersonalisedMovingAverage` for your indicator.
 
 The rating model is overly simplified and should be refined to suit your needs before usage.
 
@@ -45,34 +45,35 @@ centaur_technical_indicators = "1.0"
 
 ### 2. Calculate the RSI for multiple periods
 
-We will iterate from 0 to 5, with a step of 1. 
+We will iterate from 0 to 5, with a step of 1 for both the numerator and the denominator. 
+
 As `ConstantModelType::PersonalisedMovingAverage` takes a float you could you have a smaller step for more precision.
 
 ```rust
-
 use centaur_technical_indicators::ConstantModelType;
 
-[...]
+// [...]
 
-for num in 0..=5 {
-    for denom in 0..=5 {
-        let num = num as f64;
-        let denom = denom as f64;
-        let rsi = relative_strength_index(
-            &prices, 
-            ConstantModelType::PersonalisedMovingAverage{ alpha_num: num, alpha_denom: denom},
-            14
-        );
+fn main() {
+    let data = get_data();
+
+    for num in 0..=5 {
+        for denom in 0..=5 {
+            let num = num as f64;
+            let denom = denom as f64;
+            let rsi = relative_strength_index(
+                &prices,
+                ConstantModelType::PersonalisedMovingAverage { alpha_num: num, alpha_denom: denom },
+                14
+            );
+        }
     }
 }
-
-[...]
-
 ```
 
 ### 3. Rate each different RSI to find the best
 
-> The logic is overly simple for the purpose of the guide.
+> The logic is overly simplified for the purpose of the guide.
 
 If the RSI is over 70 (overbought) and the next price < current price, the model gets a `+1`
 
@@ -80,71 +81,78 @@ If the RSI is under 30 (oversold) and the next price > current price, the model 
 
 
 ```rust
+// [...]
 
-let mut best_rating = 0.0;
-let mut best_numerator = 0.0;
-let mut best_denominator = 0.0;
+fn main() {
+    let data = get_data();
+    let mut best_rating = 0.0;
+    let mut best_numerator = 0.0;
+    let mut best_denominator = 0.0;
 
-for num in 0..=5 {
-    for denom in 0..=5 {
-        let num = num as f64;
-        let denom = denom as f64;
-        let rsi = relative_strength_index(
-            &prices, 
-            ConstantModelType::PersonalisedMovingAverage{ 
-                alpha_num: num, 
-                alpha_den: denom
-            },
-            14
-        );
-       
-        let mut current_rating = 0.0;
-        let mut attempt = 0.0;
-        for i in 14..data.len() - 1 { 
-            let rsi_val = rsi[i - 14]; 
+    for num in 0..=5 {
+        for denom in 0..=5 {
+            let num = num as f64;
+            let denom = denom as f64;
+            let rsi = relative_strength_index(
+                &prices,
+                ConstantModelType::PersonalisedMovingAverage {
+                    alpha_num: num,
+                    alpha_den: denom
+                },
+                14
+            );
 
-            // If RSI > 70, overbought, price is expected to fall, if that happens +1 reward
-            if rsi_val > 70.0 {
-                attempt += 1.0;
-                if prices[i + 1] < prices[i] {
-                    current_rating += 1.0;
+            let mut current_rating = 0.0;
+            let mut attempt = 0.0;
+            for i in 14..data.len() - 1 {
+                let rsi_val = rsi[i - 14];
+
+                // If RSI > 70, overbought, price is expected to fall, if that happens +1 reward
+                if rsi_val > 70.0 {
+                    attempt += 1.0;
+                    if prices[i + 1] < prices[i] {
+                        current_rating += 1.0;
+                    }
+                }
+
+                // If RSI < 30, oversold, price is expected to rise, if that happens +1 reward
+                if rsi_val < 30.0 {
+                    attempt += 1.0;
+                    if prices[i + 1] > prices[i] {
+                        current_rating += 1.0;
+                    }
                 }
             }
-
-            // If RSI < 30, oversold, price is expected to rise, if that happens +1 reward
-            if rsi_val < 30.0 {
-                attempt += 1.0;
-                if prices[i + 1] > prices[i] {
-                    current_rating += 1.0;
-                }
+            // The shorter the period the more RSIs, so the more opportunities to be right,
+            // for fairness we divide by the number of attempts
+            let average_rating = current_rating / attempt;
+            if average_rating > best_rating {
+                best_rating = average_rating;
+                best_numerator = num;
+                best_denominator = denom;
             }
-        }
-        // The shorter the period the more RSIs, so the more opportunities to be right,
-        // for fairness we divide by the number of attempts
-        let average_rating = current_rating / attempt;
-        if average_rating > best_rating {
-            best_rating = average_rating;
-            best_numerator = num;
-            best_denominator = denom;
         }
     }
+
+    println!(
+        "Best numerator {}, best denominator {} for RSI, with a rating of {}",
+        best_numerator, best_denominator, best_rating
+    );
 }
-
-println!(
-    "Best numerator {}, best denominator {} for RSI, with a rating of {}",
-    best_numerator, best_denominator, best_rating
-);
-
-[...]
-
 ```
 
 ---
 
 ## 🧪 Output
 
-> to run the repo example `cargo run --example personalised_moving_average < data.csv` , the code can be found [here](./examples/personalised_moving_average.rs)
+The full code for this guide can be found in [`./examples/personalised_moving_average.rs`](./examples/personalised_moving_average.rs).
 
+To run it:
+```bash
+cd examples
+cargo run --example personalised_moving_average < data.csv
+```
+Expected output:
 ```shell
 Loaded 251 prices
 Best numerator 5, best denominator 1 for RSI, with a rating of 0.6129032258064516
@@ -154,6 +162,4 @@ Best numerator 5, best denominator 1 for RSI, with a rating of 0.612903225806451
 
 ## ✅ Next Steps
 
-- [Programatically choose a period](./choose_period.md) 
-- Combine period selection and constant type model selection
-- Introduce the notion of punishment to the rating system
+- [How to use the McGinley dynamic variation of functions](./mcginley_dynamic.md)

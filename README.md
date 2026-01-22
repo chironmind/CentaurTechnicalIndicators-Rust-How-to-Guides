@@ -8,11 +8,11 @@ These guides are **goal-oriented**, helping you solve real-world tasks using Cen
 
 ## 🧭 What You’ll Find Here
 
-- [Load CSV Price Data:](./load_csv.md) Parse OHLC prices from a file and calculate RSI 
+- [How to load CSV Price Data:](./load_csv.md) Parse OHLC prices from a file and calculate RSI 
 - [When to use a bulk vs single function:](./bulk_vs_single.md) Understand when to use bulk functions or single functions
-- [Choosing the right constant model type:](./choose_constant_model_type.md) Programmatically determine the best `ConstantModelType` 
-- [Choosing the right deviation model:](./choose_deviation_model.md) Programmatically determine the best deviation model 
-- [Choosing the right period:](./choose_period.md) Programmatically determine the best period
+- [How to choose the right constant model type:](./choose_constant_model_type.md) Programmatically determine the best `ConstantModelType` 
+- [How to choose the right deviation model:](./choose_deviation_model.md) Programmatically determine the best deviation model 
+- [How to choose the right period:](./choose_period.md) Programmatically determine the best period
 - [How to use the Personalised Moving Average:](./personalised_moving_average.md) Programmatically determine the alpha of the moving average
 - [How to use the McGinley dynamic variation of functions:](./mcginley_dynamic.md) Quick guide on how to use the McGinley Dynamic functions 
 
